@@ -25,6 +25,13 @@ namespace Lab10
             MovieList.Add(new Movies("Guardians of the Galaxy", "Sci-Fi"));
             MovieList.Add(new Movies("Serenity", "Sci-Fi"));
 
+            List<string> CategoriesList = new List<string>();
+            CategoriesList.Add("Animated");
+            CategoriesList.Add("Drama");
+            CategoriesList.Add("Horror");
+            CategoriesList.Add("Sci-Fi");
+
+
             bool add = true;
             do
             {
@@ -34,9 +41,12 @@ namespace Lab10
                 {
                     Console.Write("Enter the new movie title:");
                     string newTitle = Console.ReadLine();
-                    Console.Write("Categories:Animated, Drama, Horror, Sci-Fi, Other");
+                    Console.WriteLine("Categories:Animated, Drama, Horror, Sci-Fi, etc.");
                     Console.Write("Enter the new movie category:");
                     string newCategory = Console.ReadLine();
+                    if (!CategoriesList.Contains(newCategory))
+                        CategoriesList.Add(newCategory);
+
                     MovieList.Add(new Movies(newTitle, newCategory));
                 }
                 else if (input == "n")
@@ -52,16 +62,16 @@ namespace Lab10
 
             do
             {
-                Console.WriteLine("Which category would you like to display movies from?");
+                Console.WriteLine("Which category would you like to display movies from?"); //variable list
                 Console.WriteLine("Options:");
-                Console.WriteLine("1: Animated");
-                Console.WriteLine("2: Drama");
-                Console.WriteLine("3: Horror");
-                Console.WriteLine("4: Sci-Fi");
-                Console.WriteLine("5: Other");
+
+                for (int i = 0; i < CategoriesList.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}: {CategoriesList[i]}");
+                }
                 Console.WriteLine("0: All");
 
-                int choice = Validation.GetNumberInRange(0, 4);
+                int choice = Validation.GetNumberInRange(0, 4); //change length to CatList.L
                 Console.Clear();
                 IEnumerable<Movies> orderedByTitle = MovieList.OrderBy(p => p.Title);
 
