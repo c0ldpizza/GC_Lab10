@@ -65,17 +65,19 @@ namespace Lab10
                 Console.WriteLine("Which category would you like to display movies from?"); //variable list
                 Console.WriteLine("Options:");
 
+                CategoriesList.Sort();
+
                 for (int i = 0; i < CategoriesList.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}: {CategoriesList[i]}");
                 }
                 Console.WriteLine("0: All");
 
-                int choice = Validation.GetNumberInRange(0, 4); //change length to CatList.L
+                int choice = Validation.GetNumberInRange(0, CategoriesList.Count);
                 Console.Clear();
                 IEnumerable<Movies> orderedByTitle = MovieList.OrderBy(p => p.Title);
 
-                foreach (Movies item in orderedByTitle)
+                foreach (Movies item in orderedByTitle) //doesn't filter out new categories
                 {
                     switch (choice)
                     {
