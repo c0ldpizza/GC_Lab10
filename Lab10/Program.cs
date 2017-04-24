@@ -19,7 +19,7 @@ namespace Lab10
             MovieList.Add(new Movies("Spirited Away", "Animated"));
             MovieList.Add(new Movies("Hacksaw Ridge", "Drama"));
             MovieList.Add(new Movies("Good Will Hunting", "Drama"));
-            MovieList.Add(new Movies("Fight Club", "Animated"));
+            MovieList.Add(new Movies("Fight Club", "Drama"));
             MovieList.Add(new Movies("Alfred Hitchcock's Birds", "Horror"));
             MovieList.Add(new Movies("The Matrix", "Sci-Fi"));
             MovieList.Add(new Movies("Guardians of the Galaxy", "Sci-Fi"));
@@ -37,9 +37,9 @@ namespace Lab10
 
                 int choice = Validation.GetNumberInRange(0, 4);
                 Console.Clear();
-                //MovieList.Sort();
+                IEnumerable<Movies> orderedByTitle = MovieList.OrderBy(p => p.Title);
 
-                foreach (Movies item in MovieList)
+                foreach (Movies item in orderedByTitle)
                 {
                     switch (choice)
                     {
@@ -70,14 +70,6 @@ namespace Lab10
                 }
 
             } while (Validation.Continue());
-        }
-
-        public static void PrintMovieCategory(int choice, List<Movies> List)
-        {
-            foreach (Movies item in List)
-            {
-
-            }
         }
     }
 }
