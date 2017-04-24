@@ -25,6 +25,31 @@ namespace Lab10
             MovieList.Add(new Movies("Guardians of the Galaxy", "Sci-Fi"));
             MovieList.Add(new Movies("Serenity", "Sci-Fi"));
 
+            bool add = true;
+            do
+            {
+                Console.WriteLine("Would you like to add a movie to the list? (y/n)");
+                string input = Console.ReadLine().ToLower();
+                if (input == "y")
+                {
+                    Console.Write("Enter the new movie title:");
+                    string newTitle = Console.ReadLine();
+                    Console.Write("Categories:Animated, Drama, Horror, Sci-Fi, Other");
+                    Console.Write("Enter the new movie category:");
+                    string newCategory = Console.ReadLine();
+                    MovieList.Add(new Movies(newTitle, newCategory));
+                }
+                else if (input == "n")
+                {
+                    add = false;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input");
+                }
+
+            } while (add);
+
             do
             {
                 Console.WriteLine("Which category would you like to display movies from?");
@@ -33,6 +58,7 @@ namespace Lab10
                 Console.WriteLine("2: Drama");
                 Console.WriteLine("3: Horror");
                 Console.WriteLine("4: Sci-Fi");
+                Console.WriteLine("5: Other");
                 Console.WriteLine("0: All");
 
                 int choice = Validation.GetNumberInRange(0, 4);
@@ -60,6 +86,10 @@ namespace Lab10
 
                         case 4:
                             if (item.Category == "Sci-Fi")
+                                Console.WriteLine($"{item.Title}");
+                            break;
+                        case 5:
+                            if (item.Category == "Other")
                                 Console.WriteLine($"{item.Title}");
                             break;
 
