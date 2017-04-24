@@ -79,36 +79,10 @@ namespace Lab10
 
                 foreach (Movies item in orderedByTitle) //doesn't filter out new categories
                 {
-                    switch (choice)
-                    {
-                        case 1:
-                            if (item.Category == "Animated")
-                                Console.WriteLine($"{item.Title}");
-                            break;
-
-                        case 2:
-                            if (item.Category == "Drama")
-                                Console.WriteLine($"{item.Title}");
-                            break;
-
-                        case 3:
-                            if (item.Category == "Horror")
-                                Console.WriteLine($"{item.Title}");
-                            break;
-
-                        case 4:
-                            if (item.Category == "Sci-Fi")
-                                Console.WriteLine($"{item.Title}");
-                            break;
-                        case 5:
-                            if (item.Category == "Other")
-                                Console.WriteLine($"{item.Title}");
-                            break;
-
-                        default:
-                            Console.WriteLine($"{item.Title}, {item.Category}");
-                            break;
-                    }
+                    if (choice == 0)
+                        Console.WriteLine($"{item.Title}, {item.Category}");
+                    else if (item.Category == CategoriesList[choice - 1])
+                        Console.WriteLine($"{item.Title}");
                 }
 
             } while (Validation.Continue());
