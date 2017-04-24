@@ -14,6 +14,7 @@ namespace Lab10
             Console.WriteLine("Do you want to continue? (y/n)");
 
             string input = Console.ReadLine();
+            Console.Clear();
 
             if (input.ToLower() == "n")
             {
